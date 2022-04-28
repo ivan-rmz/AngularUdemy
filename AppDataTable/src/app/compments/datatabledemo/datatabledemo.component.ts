@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 // import { stringify } from 'querystring';
 import { InfoAPI } from 'src/app/models/infoAPI.model';
 import { DataService } from 'src/app/services/datatabledemo/data.service';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 
 @Component({
   selector: 'app-datatabledemo',
@@ -19,8 +20,12 @@ export class DatatabledemoComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  @ViewChild(MatSort) matSort! : MatSort;
+
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.matSort;
   }
 
   constructor(private _entriesService:DataService) { }
