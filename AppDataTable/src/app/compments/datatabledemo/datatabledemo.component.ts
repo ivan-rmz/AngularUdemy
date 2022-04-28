@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+// import { stringify } from 'querystring';
 import { InfoAPI } from 'src/app/models/infoAPI.model';
 import { DataService } from 'src/app/services/datatabledemo/data.service';
 
@@ -10,6 +11,8 @@ import { DataService } from 'src/app/services/datatabledemo/data.service';
   styleUrls: ['./datatabledemo.component.css']
 })
 export class DatatabledemoComponent implements OnInit {
+
+
 
   displayedColumns: string[] = ['API', 'Description', 'Link', 'Category', 'Cors'];
   dataSource = new MatTableDataSource<InfoAPI>([]);
@@ -35,4 +38,11 @@ export class DatatabledemoComponent implements OnInit {
       }
     );
   }
+
+  applyFilter(event: Event){
+    let filterValue = (event.target as HTMLInputElement).value;
+    if(typeof filterValue === 'string')
+      this.dataSource.filter = filterValue!.trim().toLowerCase();
+    }
+
 }
