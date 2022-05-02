@@ -17,6 +17,7 @@ export class DatatabledemoComponent implements OnInit {
 
   displayedColumns: string[] = ['API', 'Description', 'Link', 'Category', 'Cors'];
   dataSource = new MatTableDataSource<InfoAPI>([]);
+  clickedRows = new Set<InfoAPI>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
