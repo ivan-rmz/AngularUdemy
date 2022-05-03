@@ -6,6 +6,7 @@ import { InfoAPI } from 'src/app/models/infoAPI.model';
 import { DataService } from 'src/app/services/datatabledemo/data.service';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { NgModule } from '@angular/core';
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-datatabledemo',
@@ -18,7 +19,6 @@ export class DatatabledemoComponent implements OnInit {
   dataSource = new MatTableDataSource<InfoAPI>([]);
   _dataSource = new MatTableDataSource<InfoAPI>([]);
   clickedRows = new Set<InfoAPI>();
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   @ViewChild(MatSort) matSort! : MatSort;
@@ -52,6 +52,16 @@ export class DatatabledemoComponent implements OnInit {
     if(filterValue != '')
       this.dataSource.data  = this.dataSource.data.filter(name => name.API.toLowerCase().indexOf(filterValue.trim().toLowerCase()) !== -1);
     if(filterValue === ''){
+      this.dataSource.data = this._dataSource.data;
+    }
+  }
+
+  onChange($event:any){
+    let filteredData = _.filter(this._dataSource.data,(item: any) =>{
+      return item.Cors.toLowerCase() == $event.value.toLowerCase();
+    })
+    this.dataSource.data = filteredData;
+    if($event.value.toLowerCase() === '-'){
       this.dataSource.data = this._dataSource.data;
     }
   }
