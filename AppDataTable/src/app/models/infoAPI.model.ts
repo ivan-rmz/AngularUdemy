@@ -3,10 +3,12 @@ export interface InfoAPIResponse{
     entries: InfoAPI[]
 }
 
-export interface InfoAPI{
-    API: string,
-    Description: string,
-    Link:string,
-    Category: string,
-    Cors:string
+export class InfoAPI{
+    constructor(
+    public API: string,
+    public Description: string,
+    public Link:string,
+    public Category: string,
+    public Cors:string
+    ){}
 }

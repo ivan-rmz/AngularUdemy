@@ -1,5 +1,5 @@
 <mat-form-field>
-    <input (keyup)="applyFilter($event)" matInput placeholder="Filter">
+    <input (keyup)="applyFilter($event)" matInput placeholder="Search">
 </mat-form-field>
 
 <div class="container">
@@ -8,8 +8,9 @@
             <button class="btn btn-success" (click)="listar()">Listar Informacion</button>
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" >
             <mat-card>
                 <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
