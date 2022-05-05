@@ -6,17 +6,18 @@
     </div>
     <hr>
     <div class="search-container">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="search-bar">
             <input (keyup)="applyFilter($event)" matInput placeholder="Search">
         </mat-form-field>
     
-        <mat-form-field appearance="fill">
-            <mat-select (selectionChange)="onChange($event)">
+        <mat-form-field appearance="fill" class="dFilter">
+            <mat-select (selectionChange)="onChange($event)" required="true">
+                <mat-option value="-">--None--</mat-option>
                 <mat-option value="yes">Yes</mat-option>
                 <mat-option value="no">No</mat-option>
                 <mat-option value="unknown">Unknown</mat-option>
-                <mat-option value="-">-</mat-option>
             </mat-select>
+            <mat-label><b>Curs</b></mat-label>
         </mat-form-field>
     </div>
     

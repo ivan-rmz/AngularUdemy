@@ -19,3 +19,15 @@ table {
 .demo-row-is-clicked {
   font-weight: bold;
 }
+
+.search-bar{
+  width: 36rem;
+  padding-right: 5%;
+  font-size: larger;
+  border: 0px;
+}
+
+
+.dFilter{
+  width:15%;
+}

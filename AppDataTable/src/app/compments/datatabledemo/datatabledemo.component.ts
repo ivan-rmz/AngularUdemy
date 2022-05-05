@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { InfoAPI } from 'src/app/models/infoAPI.model';
 import { DataService } from 'src/app/services/datatabledemo/data.service';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import * as _ from 'lodash'
 
@@ -14,7 +15,9 @@ import * as _ from 'lodash'
   styleUrls: ['./datatabledemo.component.css']
 })
 export class DatatabledemoComponent implements OnInit {
-
+  options: FormGroup;
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
   displayedColumns: string[] = ['API', 'Description', 'Link', 'Category', 'Cors'];
   dataSource = new MatTableDataSource<InfoAPI>([]);
   _dataSource = new MatTableDataSource<InfoAPI>([]);
@@ -30,7 +33,12 @@ export class DatatabledemoComponent implements OnInit {
     this.listar();
   }
 
-  constructor(private _entriesService:DataService) { }
+  constructor(private _entriesService:DataService, fb: FormBuilder) { 
+    this.options = fb.group({
+      hideRequired: this.hideRequiredControl,
+      floatLabel: this.floatLabelControl,
+    });
+  }
 
   ngOnInit(): void {
   }
